@@ -1,0 +1,29 @@
+@use 'variables' as *;
+.route-search { display:flex; flex-direction:column; min-height:100dvh; background:$color-bg;
+  &__head { background:linear-gradient(135deg,$color-primary,$color-primary-dark); padding:0 20px 20px; }
+  &__back { display:inline-flex; align-items:center; gap:6px; color:rgba(255,255,255,.7); font-size:13px; cursor:pointer; background:none; border:none; padding:0; margin-top:4px; font-family:$font-family; }
+  &__title { font-size:18px; font-weight:$font-weight-extrabold; color:#fff; margin-top:8px; }
+  &__sub { font-size:12px; color:rgba(255,255,255,.7); margin-top:2px; }
+  &__body { flex:1; padding:16px 16px 80px; }
+  &__loading { text-align:center; padding:40px; font-size:32px; }
+  &__loading-txt { font-size:13px; color:$color-muted; margin-top:8px; }
+  &__section-title { font-size:14px; font-weight:$font-weight-extrabold; color:$color-text; margin-bottom:12px; }
+  &__card {
+    background:$color-card; border-radius:$radius-card; padding:16px; margin-bottom:10px;
+    border:2px solid transparent; cursor:pointer; transition:all .18s;
+    display:flex; align-items:center; gap:12px;
+    &:hover { border-color:$color-border; }
+    &--best { border-color:$color-primary; background:$color-primary-bg; }
+  }
+  &__dot { width:12px; height:12px; border-radius:50%; flex-shrink:0; &--g { background:$color-primary; } &--o { background:$color-orange; } &--r { background:$color-accent-red; } }
+  &__info { flex:1; }
+  &__name { font-size:14px; font-weight:$font-weight-bold; color:$color-text; }
+  &__meta { font-size:12px; color:$color-muted; margin-top:3px; }
+  &__badges { display:flex; gap:6px; flex-wrap:wrap; margin-top:6px; }
+  &__badge { font-size:11px; font-weight:$font-weight-bold; padding:3px 9px; border-radius:8px;
+    &--green { background:$color-primary-bg; color:$color-primary; }
+    &--gold  { background:$color-gold-light; color:$color-gold-dark; }
+    &--red   { background:$color-red-light; color:$color-accent-red; }
+  }
+  &__compat { font-size:11px; font-weight:$font-weight-bold; padding:3px 9px; border-radius:8px; background:$color-green-light; color:#1a8c3a; white-space:nowrap; }
+}

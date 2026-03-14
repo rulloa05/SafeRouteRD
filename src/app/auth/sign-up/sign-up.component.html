@@ -1,0 +1,77 @@
+<div class="signup">
+  <div class="signup__head">
+    <div class="sbar light"><span>9:41</span><span>100%</span></div>
+    <!-- FIX: Volver → splash, no login -->
+    <button class="signup__back" (click)="router.navigate(['/auth/splash'])">← Volver</button>
+    <div style="margin-top:8px">
+      <div style="font-size:22px;font-weight:800;color:#fff">Crear cuenta</div>
+      <div style="font-size:13px;color:rgba(255,255,255,.7);margin-top:2px">Únete a Safe Routes Guardian</div>
+    </div>
+  </div>
+
+  <div class="signup__card">
+    <!-- Error banner -->
+    <div *ngIf="errorMsg" style="
+      background:#fdecea;border:1px solid rgba(231,76,60,.3);border-radius:12px;
+      padding:12px 14px;font-size:13px;color:#c0392b;margin-bottom:16px;
+      display:flex;align-items:center;gap:8px">
+      ⚠️ {{ errorMsg }}
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="field">
+        <label>Nombre completo *</label>
+        <input placeholder="Ej. Carlos Martínez" formControlName="fullName"
+          [style.border-color]="err('fullName') ? '#e74c3c' : ''"/>
+        <span style="font-size:11px;color:#e74c3c;margin-top:3px;display:block"
+          *ngIf="err('fullName')">Este campo es requerido</span>
+      </div>
+
+      <div class="field">
+        <label>Correo electrónico *</label>
+        <input type="email" placeholder="tu@correo.com" formControlName="email"
+          [style.border-color]="err('email') ? '#e74c3c' : ''"/>
+        <span style="font-size:11px;color:#e74c3c;margin-top:3px;display:block"
+          *ngIf="err('email')">Ingresa un correo válido</span>
+      </div>
+
+      <div class="field">
+        <label>Contraseña * (mín. 6 caracteres)</label>
+        <input type="password" placeholder="••••••••" formControlName="password"
+          [style.border-color]="err('password') ? '#e74c3c' : ''"/>
+        <span style="font-size:11px;color:#e74c3c;margin-top:3px;display:block"
+          *ngIf="err('password')">Mínimo 6 caracteres</span>
+      </div>
+
+      <div class="field">
+        <label>Confirmar contraseña *</label>
+        <input type="password" placeholder="Repite la contraseña" formControlName="confirmPassword"
+          [style.border-color]="err('confirmPassword') ? '#e74c3c' : ''"/>
+      </div>
+
+      <div class="field">
+        <label>Teléfono móvil</label>
+        <input type="tel" placeholder="+1 809 000 0000" formControlName="phone"/>
+      </div>
+
+      <div class="field">
+        <label>Fecha de nacimiento</label>
+        <input type="date" formControlName="dateOfBirth"/>
+      </div>
+
+      <div class="field">
+        <label>Ciudad / Sector</label>
+        <input placeholder="Ej. Santo Domingo Este" formControlName="stateCity"/>
+      </div>
+
+      <button class="btn btn-primary" type="submit" [disabled]="loading">
+        {{ loading ? 'Creando cuenta...' : 'Crear cuenta →' }}
+      </button>
+    </form>
+
+    <div style="font-size:13px;color:#6c757d;text-align:center;margin-top:14px">
+      ¿Ya tienes cuenta?
+      <a routerLink="/auth/login" style="color:#0d7377;font-weight:700">Inicia sesión</a>
+    </div>
+  </div>
+</div>

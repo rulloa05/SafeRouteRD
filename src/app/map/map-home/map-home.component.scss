@@ -1,0 +1,182 @@
+@use 'variables' as *;
+
+app-map-home { display: block; width: 100%; height: 100dvh; }
+
+.map-home {
+  position: relative; width: 100%; height: 100dvh; overflow: hidden;
+
+  &__map { position: absolute; inset: 0; z-index: $z-map; }
+
+  // Top search bar — prototype .map-topbar / .search-box
+  &__topbar {
+    position: absolute; top: 0; left: 0; right: 0; z-index: $z-header;
+    padding: 44px 14px 10px;
+  }
+
+  &__search-box {
+    background: $color-card; border-radius: 16px;
+    padding: 12px 14px; display: flex; align-items: center; gap: 10px;
+    box-shadow: $shadow-map; cursor: pointer;
+    &:hover { background: $color-bg; }
+  }
+  &__search-icon { color: $color-muted; font-size: 18px; flex-shrink: 0; }
+  &__search-text { font-size: 14px; color: $color-muted; flex: 1; }
+
+  // Vehicle chip — prototype .v-chip
+  &__v-chip {
+    display: flex; align-items: center; gap: 5px;
+    background: $color-dark; color: #fff;
+    font-size: 12px; font-weight: $font-weight-semibold;
+    padding: 5px 11px; border-radius: 20px; cursor: pointer;
+    white-space: nowrap;
+    &:hover { background: $color-primary-dark; }
+  }
+
+  // FABs
+  &__fab {
+    position: absolute; right: 14px; z-index: $z-fab;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: $color-card; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; box-shadow: $shadow-elevated;
+    transition: all .2s;
+    &:hover { background: $color-bg; }
+    &--locate { bottom: 250px; }
+    &--report { bottom: 300px; background: $color-primary; color: #fff;
+      &.open { background: $color-accent-red; transform: rotate(45deg); }
+    }
+    &--notif { bottom: 354px; }
+  }
+
+  &__notif-dot {
+    position: absolute; top: 6px; right: 6px;
+    width: 14px; height: 14px; background: $color-accent-red; color: #fff;
+    border-radius: 50%; font-size: 8px; font-weight: $font-weight-bold;
+    display: flex; align-items: center; justify-content: center;
+    border: 1.5px solid $color-card;
+  }
+
+  // Report menu
+  &__report-menu {
+    position: absolute; right: 68px; bottom: 296px; z-index: $z-overlay;
+    background: $color-card; border-radius: $radius-card; box-shadow: $shadow-elevated;
+    min-width: 200px; overflow: hidden;
+    animation: slideIn .15s ease;
+  }
+  @keyframes slideIn { from { opacity:0; transform:translateX(8px); } to { opacity:1; transform:translateX(0); } }
+
+  &__report-title {
+    padding: 10px 14px; font-size: 11px; font-weight: $font-weight-bold;
+    text-transform: uppercase; letter-spacing: .5px; color: $color-muted;
+    border-bottom: 1px solid $color-border; background: $color-bg;
+  }
+
+  &__report-item {
+    display: flex; align-items: center; gap: 10px; width: 100%;
+    padding: 12px 14px; background: none; border: none;
+    border-bottom: 1px solid $color-border; cursor: pointer;
+    font-size: 13px; color: $color-text; font-family: $font-family;
+    &:last-child { border-bottom: none; }
+    &:hover { background: $color-bg; }
+  }
+  &__report-svg {
+    width: 32px; height: 32px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    svg { width: 32px; height: 32px; }
+  }
+
+  // Notification panel
+  &__notif-panel {
+    position: absolute; top: 100px; right: 14px; width: 280px;
+    background: $color-card; border-radius: $radius-card; box-shadow: $shadow-elevated;
+    z-index: $z-overlay; overflow: hidden;
+  }
+  &__notif-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 14px; background: $gradient-dark; color: #fff;
+    font-size: 13px; font-weight: $font-weight-bold;
+    button { background: none; border: none; cursor: pointer; color: #fff; font-size: 16px; }
+  }
+  &__notif-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 11px 14px; border-bottom: 1px solid $color-border;
+    &:last-child { border-bottom: none; }
+    font-size: 20px;
+  }
+  &__notif-label { font-size: 13px; font-weight: $font-weight-medium; color: $color-text; }
+  &__notif-time  { font-size: 11px; color: $color-muted; margin-top: 2px; }
+
+  // Toast
+  &__toast {
+    position: absolute; bottom: 220px; left: 50%; transform: translateX(-50%);
+    background: $color-dark; color: #fff; font-size: 13px; font-weight: $font-weight-semibold;
+    padding: 10px 20px; border-radius: 20px; z-index: $z-overlay;
+    white-space: nowrap; animation: toastFade 3s forwards;
+  }
+  @keyframes toastFade { 0%{opacity:0;transform:translateX(-50%) translateY(6px)} 10%{opacity:1;transform:translateX(-50%) translateY(0)} 80%{opacity:1} 100%{opacity:0} }
+
+  // Bottom panel — prototype .map-panel
+  &__panel {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: $color-card; border-radius: $radius-xl $radius-xl 0 0;
+    padding: 16px 16px 80px; z-index: 500;
+    box-shadow: 0 -4px 24px rgba(0,0,0,.1);
+  }
+
+  &__drag-bar {
+    width: 36px; height: 4px; background: $color-border;
+    border-radius: 2px; margin: 0 auto 14px;
+  }
+
+  &__panel-title {
+    font-size: 14px; font-weight: $font-weight-extrabold;
+    color: $color-text; margin-bottom: 12px;
+  }
+
+  // Stats row
+  &__stats { display: flex; gap: 10px; margin-bottom: 12px; }
+  &__stat {
+    flex: 1; background: $color-bg; border-radius: $radius-md;
+    padding: 11px; text-align: center;
+  }
+  &__stat-val {
+    font-size: 19px; font-weight: $font-weight-extrabold; color: $color-text;
+    &--good { color: $color-primary; }
+  }
+  &__stat-lbl { font-size: 10px; color: $color-muted; margin-top: 1px; }
+
+  // Alert bar — prototype .alert-bar
+  &__alert-bar {
+    background: $color-gold-light;
+    border: 1px solid rgba(212,168,67,.5);
+    border-radius: 10px; padding: 9px 12px;
+    display: flex; gap: 8px; align-items: center;
+    font-size: 12px; color: $color-gold-dark; margin-bottom: 12px;
+  }
+
+  // Route options — prototype .routes / .route-opt
+  &__routes { display: flex; flex-direction: column; gap: 8px; }
+  &__route-opt {
+    border-radius: 13px; padding: 12px 13px;
+    display: flex; align-items: center; gap: 10px; cursor: pointer;
+    background: $color-bg; border: 2px solid transparent; transition: all .18s;
+    &:hover { border-color: $color-border; }
+    &--best { border-color: $color-primary; background: $color-primary-bg; }
+  }
+  &__rdot {
+    width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+    &--g { background: $color-primary; }
+    &--o { background: $color-orange; }
+    &--r { background: $color-accent-red; }
+  }
+  &__rinfo { flex: 1; }
+  &__rname { font-size: 13px; font-weight: $font-weight-bold; color: $color-text; }
+  &__rdet  { font-size: 11px; color: $color-muted; margin-top: 1px; }
+  &__rbadge {
+    font-size: 10px; font-weight: $font-weight-bold; padding: 3px 9px; border-radius: 8px;
+    white-space: nowrap;
+    &--g { background: $color-primary-bg; color: $color-primary; }
+    &--o { background: $color-orange-light; color: $color-orange; }
+    &--r { background: $color-red-light; color: $color-accent-red; }
+  }
+}

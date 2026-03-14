@@ -1,0 +1,20 @@
+@use 'variables' as *;
+
+.pill-button {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  border: none; border-radius: $radius-card; padding: 15px 20px;
+  font-size: $font-size-base; font-weight: $font-weight-bold;
+  font-family: $font-family; cursor: pointer; width: auto;
+  letter-spacing: .1px; transition: opacity .15s, transform .1s;
+  min-height: 50px;
+
+  &:active  { opacity: .85; transform: scale(.98); }
+  &:disabled { opacity: .5; cursor: not-allowed; }
+
+  &--primary { background: $color-primary; color: #fff; box-shadow: $shadow-button; }
+  &--outline { background: transparent; border: 1.5px solid $color-primary; color: $color-primary; }
+  &--danger  { background: $color-accent-red; color: #fff; }
+  &--success { background: $color-accent-green; color: #fff; }
+
+  &--block { display: flex; width: 100%; }
+}

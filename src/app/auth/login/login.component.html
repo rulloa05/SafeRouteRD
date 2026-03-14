@@ -1,0 +1,50 @@
+<div class="login">
+  <div style="background: linear-gradient(160deg, #1a2a3a, #065a5e);">
+    <div class="sbar light"><span>9:41</span><span>●● 100%</span></div>
+    <div class="login__head" style="padding-top:16px">
+      <div class="login__logo-slot">📍</div>
+      <div class="login__brand">Safe Routes Guardian</div>
+    </div>
+  </div>
+
+  <div class="login__card">
+    <div class="login__title">Bienvenido de nuevo</div>
+    <div class="login__sub">Inicia sesión para continuar</div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="field">
+        <label>Correo electrónico</label>
+        <input type="email" placeholder="tu@correo.com" formControlName="email"/>
+      </div>
+      <div class="field">
+        <label>Contraseña</label>
+        <input type="password" placeholder="••••••••" formControlName="password"/>
+      </div>
+
+      <label class="login__terms">
+        <input type="checkbox" formControlName="acceptTerms"/>
+        Acepto los <a routerLink="/auth/login">términos y condiciones</a>
+      </label>
+
+      <a class="login__forgot" routerLink="/auth/forgot-password">¿Olvidaste tu contraseña?</a>
+
+      <button class="btn btn-primary" type="submit" [disabled]="loading">
+        {{ loading ? 'Iniciando sesión...' : 'Iniciar sesión' }}
+      </button>
+    </form>
+
+    <div class="login__divider">o continúa con</div>
+    <div class="login__social-row">
+      <button class="login__social-btn" type="button">
+        <span>🇬</span> Google
+      </button>
+      <button class="login__social-btn" type="button">
+        <span>📘</span> Facebook
+      </button>
+    </div>
+
+    <div class="login__footer">
+      ¿No tienes cuenta? <a routerLink="/auth/sign-up">Regístrate</a>
+    </div>
+  </div>
+</div>

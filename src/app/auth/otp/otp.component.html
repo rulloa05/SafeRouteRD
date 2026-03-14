@@ -1,0 +1,21 @@
+<div class="otp">
+  <div class="otp__head">
+    <div class="sbar light"><span>9:41</span><span>100%</span></div>
+    <button class="otp__back" routerLink="/auth/verify-account">← Volver</button>
+    <div class="otp__title">Ingresa el código</div>
+    <div class="otp__sub">Verificación de seguridad</div>
+  </div>
+  <div class="otp__card">
+    <div class="otp__icon">🔐</div>
+    <p class="otp__hint">Ingresa el código de 6 dígitos que enviamos a tu teléfono o correo.</p>
+    <div class="otp__inputs">
+      <input class="otp__input" maxlength="1" *ngFor="let d of digits; let i = index"
+        [(ngModel)]="digits[i]" (input)="onInput($event, i)" (keydown)="onKeyDown($event, i)"
+        type="text" inputmode="numeric"/>
+    </div>
+    <div class="otp__btns">
+      <button class="btn btn-primary" (click)="onVerify()">Verificar código</button>
+    </div>
+    <div class="otp__resend">¿No recibiste el código? <a (click)="onResend()">Reenviar →</a></div>
+  </div>
+</div>

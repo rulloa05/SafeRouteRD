@@ -1,0 +1,37 @@
+@use 'variables' as *;
+
+.bnav {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: $z-drawer;
+  background: $color-card; border-top: 1px solid $color-border;
+  display: flex; padding-bottom: env(safe-area-inset-bottom, 8px);
+  box-shadow: 0 -2px 16px rgba(0,0,0,.08);
+}
+
+.bnav__item {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  padding: 10px 0 4px; cursor: pointer;
+  font-weight: $font-weight-semibold; color: $color-muted; gap: 4px;
+  background: none; border: none; font-family: $font-family;
+  transition: color .2s, transform .15s;
+  position: relative;
+
+  &--active {
+    color: $color-primary;
+    &::after {
+      content: '';
+      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 28px; height: 3px; background: $color-primary;
+      border-radius: 3px 3px 0 0;
+    }
+  }
+  &:active { transform: scale(.92); }
+  &:hover { color: $color-primary-light; }
+}
+
+.bnav__icon {
+  width: 24px; height: 24px;
+  display: flex; align-items: center; justify-content: center;
+  svg { width: 22px; height: 22px; }
+}
+
+.bnav__label { font-size: 10px; }

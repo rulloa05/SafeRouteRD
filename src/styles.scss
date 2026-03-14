@@ -1,0 +1,97 @@
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
+
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  font-size: 16px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: $font-family;
+  font-size: $font-size-base;
+  color: $color-text;
+  background: $color-bg;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a { color: $color-primary; text-decoration: none; }
+button { font-family: $font-family; }
+img { max-width: 100%; display: block; }
+
+// ── Shared field style (used across auth forms) ──
+.field {
+  margin-bottom: 14px;
+
+  label {
+    font-size: 11px;
+    font-weight: $font-weight-bold;
+    color: $color-muted;
+    display: block;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+  }
+
+  input {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1.5px solid $color-border;
+    border-radius: $radius-md;
+    font-size: $font-size-base;
+    color: $color-text;
+    background: $color-bg;
+    outline: none;
+    transition: border-color .15s;
+    font-family: $font-family;
+
+    &:focus { border-color: $color-primary; background: $color-white; }
+    &::placeholder { color: $color-muted; }
+  }
+}
+
+// ── Shared btn class ──
+.btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  border: none; border-radius: $radius-card; padding: 15px 20px;
+  font-size: $font-size-base; font-weight: $font-weight-bold;
+  cursor: pointer; width: 100%; letter-spacing: .1px;
+  transition: opacity .15s, transform .1s;
+  font-family: $font-family;
+
+  &:active { opacity: .85; transform: scale(.98); }
+  &:disabled { opacity: .5; cursor: not-allowed; }
+
+  &-primary { background: $color-primary; color: #fff; box-shadow: $shadow-button; }
+  &-gold    { background: $color-accent-gold; color: $color-dark; }
+  &-outline { background: transparent; border: 1.5px solid rgba(255,255,255,.35); color: #fff; }
+  &-danger  { background: $color-accent-red; color: #fff; }
+  &-sm      { padding: 10px 16px; font-size: $font-size-sm; border-radius: $radius-sm; width: auto; }
+}
+
+// ── Status bar ──
+.sbar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 24px 0;
+  font-size: 12px; font-weight: $font-weight-semibold;
+  position: relative; z-index: 50; min-height: 44px;
+
+  &.light { color: #fff; }
+  &.dark  { color: $color-text; }
+}
+
+// ── Section label utility ──
+.section-label {
+  font-size: 11px; font-weight: $font-weight-bold;
+  color: $color-muted; text-transform: uppercase;
+  letter-spacing: .7px; margin-bottom: 8px; padding: 0 2px;
+}
+
+// ── Scrollbar ──
+::-webkit-scrollbar { width: 0; }

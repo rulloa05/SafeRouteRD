@@ -1,0 +1,15 @@
+@use 'variables' as *;
+.routes-details { display:flex; flex-direction:column; min-height:100dvh; background:$color-bg;
+  &__head { background:linear-gradient(135deg,$color-primary,$color-primary-dark); padding:0 20px 20px; }
+  &__back { display:inline-flex; align-items:center; gap:6px; color:rgba(255,255,255,.7); font-size:13px; cursor:pointer; background:none; border:none; padding:0; margin-top:4px; font-family:$font-family; }
+  &__title { font-size:20px; font-weight:$font-weight-extrabold; color:#fff; margin-top:8px; }
+  &__card { background:$color-card; border-radius:$radius-card; margin:16px; padding:16px; }
+  &__card-title { font-size:14px; font-weight:$font-weight-extrabold; color:$color-text; margin-bottom:12px; }
+  &__stats { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:12px; }
+  &__stat { background:$color-bg; border-radius:$radius-md; padding:11px; text-align:center; }
+  &__stat-val { font-size:18px; font-weight:$font-weight-extrabold; color:$color-primary; }
+  &__stat-lbl { font-size:10px; color:$color-muted; margin-top:1px; }
+  &__stars { display:flex; gap:6px; font-size:28px; justify-content:center; margin-bottom:12px; cursor:pointer; }
+  &__textarea { width:100%; padding:13px 14px; border:1.5px solid $color-border; border-radius:$radius-md; font-size:13px; color:$color-text; background:$color-bg; outline:none; font-family:$font-family; resize:none; &:focus { border-color:$color-primary; } }
+  &__footer { padding:14px 16px 28px; background:$color-card; border-top:1px solid $color-border; }
+}

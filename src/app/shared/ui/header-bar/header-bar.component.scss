@@ -1,0 +1,24 @@
+@use 'variables' as *;
+
+.header-bar {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 20px 14px;
+  background: $gradient-dark;
+  min-height: 56px;
+
+  &__back {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: rgba(255,255,255,.15); border: none; border-radius: 50%;
+    width: 36px; height: 36px; cursor: pointer; color: #fff; flex-shrink: 0;
+    transition: background .15s;
+    &:hover { background: rgba(255,255,255,.25); }
+    i { font-size: 16px; }
+  }
+
+  &__icon { color: rgba(255,255,255,.8); font-size: 18px; }
+
+  &__title {
+    font-size: $font-size-lg; font-weight: $font-weight-extrabold;
+    color: #fff; flex: 1; letter-spacing: -.2px;
+  }
+}

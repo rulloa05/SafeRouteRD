@@ -1,0 +1,155 @@
+@use 'variables' as *;
+
+.set-dest {
+  display: flex; flex-direction: column; height: 100dvh;
+  background: $color-bg; overflow: hidden;
+
+  &__head {
+    background: linear-gradient(135deg, $color-primary, $color-primary-dark);
+    padding: 0 20px 16px; flex-shrink: 0;
+  }
+  &__back {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: rgba(255,255,255,.7); font-size: 13px;
+    background: none; border: none; cursor: pointer;
+    padding: 0; margin-top: 4px; font-family: $font-family;
+    &:hover { color: #fff; }
+  }
+  &__head-title {
+    font-size: 18px; font-weight: $font-weight-extrabold;
+    color: #fff; margin-top: 8px;
+  }
+
+  &__form {
+    background: $color-card; padding: 14px 16px;
+    display: flex; flex-direction: column; gap: 8px;
+    flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  }
+
+  &__input-row {
+    display: flex; align-items: center; gap: 10px;
+    background: $color-bg; border: 1.5px solid $color-border;
+    border-radius: $radius-md; padding: 12px 14px; transition: border-color .15s;
+    &:focus-within, &--active { border-color: $color-primary; background: $color-white; }
+  }
+
+  &__dot {
+    width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+    &--origin { background: $color-primary; }
+    &--dest   { background: $color-accent-red; }
+  }
+
+  &__input {
+    flex: 1; border: none; background: transparent;
+    font-size: 14px; color: $color-text; outline: none; font-family: $font-family;
+    &::placeholder { color: $color-muted; }
+  }
+
+  &__locate-btn {
+    background: none; border: none; cursor: pointer; color: $color-primary;
+    padding: 0; display: flex; align-items: center; width: 28px; height: 28px;
+    justify-content: center; border-radius: 50%; flex-shrink: 0;
+    &:hover { background: $color-primary-bg; }
+  }
+
+  // ── Autocomplete Nominatim ──
+  &__autocomplete {
+    background: $color-card; border-bottom: 1px solid $color-border;
+    max-height: 260px; overflow-y: auto; flex-shrink: 0;
+    box-shadow: 0 4px 16px rgba(0,0,0,.1); z-index: 100;
+  }
+  &__ac-loading {
+    padding: 14px 16px; font-size: 13px; color: $color-muted;
+    display: flex; align-items: center; gap: 8px;
+  }
+  &__ac-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 12px 16px; cursor: pointer; border-bottom: 1px solid $color-border;
+    transition: background .1s;
+    &:last-of-type { border-bottom: none; }
+    &:hover { background: $color-primary-bg; }
+  }
+  &__ac-icon {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: $color-primary-bg; display: flex; align-items: center;
+    justify-content: center; font-size: 14px; flex-shrink: 0; margin-top: 2px;
+  }
+  &__ac-name {
+    font-size: 13px; font-weight: $font-weight-bold; color: $color-text;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  &__ac-addr { font-size: 11px; color: $color-muted; margin-top: 2px; line-height: 1.4; }
+
+  // ── Recientes ──
+  &__recents {
+    background: $color-card; padding: 0 16px 12px;
+    flex-shrink: 0; border-bottom: 1px solid $color-border;
+  }
+  &__recents-title {
+    font-size: 11px; font-weight: $font-weight-bold; color: $color-muted;
+    text-transform: uppercase; letter-spacing: .7px; padding: 10px 0 8px;
+  }
+  &__recent-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 0; border-bottom: 1px solid $color-border; cursor: pointer;
+    &:last-child { border-bottom: none; }
+    &:hover { opacity: .75; }
+  }
+  &__recent-icon-wrap {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: $color-primary-bg;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; flex-shrink: 0;
+  }
+  &__recent-name { font-size: 13px; font-weight: $font-weight-bold; color: $color-text; }
+  &__recent-addr { font-size: 11px; color: $color-muted; margin-top: 1px; }
+  &__recent-arrow { color: $color-muted; font-size: 14px; margin-left: auto; }
+
+  // ── Mapa ──
+  &__map { flex: 1; position: relative; min-height: 0; }
+  &__map-el { position: absolute; inset: 0; }
+
+  &__map-hint {
+    position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+    background: $color-card; border-radius: 20px; padding: 8px 16px;
+    font-size: 12px; color: $color-muted; box-shadow: $shadow-card;
+    white-space: nowrap; z-index: 500;
+  }
+
+  &__route-badge {
+    position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+    background: $color-primary; color: #fff; border-radius: 24px; padding: 10px 20px;
+    font-size: 13px; font-weight: $font-weight-bold;
+    box-shadow: 0 4px 16px rgba(13,115,119,.4); z-index: 500; white-space: nowrap;
+    display: flex; align-items: center; gap: 6px;
+  }
+  &__badge-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #34c759; flex-shrink: 0;
+    box-shadow: 0 0 0 3px rgba(52,199,89,.3);
+  }
+  &__badge-sep { opacity: .7; }
+  &__badge-label { opacity: .8; font-weight: normal; font-size: 11px; }
+
+  &__route-overlay {
+    position: absolute; inset: 0; background: rgba(255,255,255,.9);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; z-index: 600;
+    backdrop-filter: blur(4px);
+  }
+
+  // ── Botón ──
+  &__bot {
+    padding: 14px 16px 28px; background: $color-card;
+    border-top: 1px solid $color-border; flex-shrink: 0;
+  }
+  &__go-btn {
+    width: 100%; padding: 16px; border-radius: $radius-pill; border: none; cursor: pointer;
+    font-size: 16px; font-weight: $font-weight-bold; font-family: $font-family;
+    background: linear-gradient(135deg, $color-primary, $color-primary-dark);
+    color: #fff; box-shadow: 0 4px 16px rgba(13,115,119,.35);
+    transition: transform .15s, box-shadow .15s;
+    &:disabled { background: $color-border; color: $color-muted; box-shadow: none; }
+    &:not(:disabled):active { transform: scale(.97); box-shadow: 0 2px 8px rgba(13,115,119,.3); }
+  }
+}

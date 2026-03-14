@@ -1,0 +1,25 @@
+@use 'variables' as *;
+.verify { display:flex; flex-direction:column; min-height:100dvh; background:$color-bg;
+  &__head { background:linear-gradient(135deg,$color-primary,$color-primary-dark); padding:0 24px 28px; }
+  &__back { display:inline-flex; align-items:center; gap:6px; color:rgba(255,255,255,.7); font-size:13px; cursor:pointer; background:none; border:none; padding:0; margin-top:4px; font-family:$font-family; }
+  &__title { font-size:22px; font-weight:$font-weight-extrabold; color:#fff; margin-top:8px; }
+  &__sub { font-size:13px; color:rgba(255,255,255,.7); margin-top:2px; }
+  &__card { background:$color-card; border-radius:$radius-2xl $radius-2xl 0 0; padding:28px 24px; flex:1; }
+  &__label { font-size:13px; font-weight:$font-weight-bold; color:$color-text; margin-bottom:12px; }
+  &__options { display:flex; flex-direction:column; gap:10px; margin-bottom:24px; }
+  &__option {
+    display:flex; align-items:center; gap:14px; padding:16px; border-radius:$radius-card;
+    border:2px solid $color-border; background:$color-bg; cursor:pointer; transition:all .18s;
+    &--sel { border-color:$color-primary; background:$color-primary-bg; }
+    &:hover { border-color:$color-primary-light; }
+  }
+  &__option-icon { font-size:28px; flex-shrink:0; }
+  &__option-title { font-size:14px; font-weight:$font-weight-bold; color:$color-text; }
+  &__option-sub { font-size:12px; color:$color-muted; margin-top:2px; }
+  &__radio { margin-left:auto; width:20px; height:20px; border-radius:50%; border:2px solid $color-border; background:$color-white; display:flex; align-items:center; justify-content:center;
+    &--sel { border-color:$color-primary; background:$color-primary; &::after { content:''; width:8px; height:8px; border-radius:50%; background:#fff; } }
+  }
+  &__skip { font-size:13px; color:$color-muted; text-align:center; margin-top:14px; cursor:pointer;
+    &:hover { color:$color-primary; }
+  }
+}

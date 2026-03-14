@@ -1,0 +1,27 @@
+@use 'variables' as *;
+.calculator { display:flex; flex-direction:column; min-height:100dvh; background:$color-bg;
+  &__head { background:linear-gradient(135deg,$color-primary,$color-primary-dark); padding:0 20px 20px; }
+  &__back { display:inline-flex; align-items:center; gap:6px; color:rgba(255,255,255,.7); font-size:13px; cursor:pointer; background:none; border:none; padding:0; margin-top:4px; font-family:$font-family; }
+  &__title { font-size:20px; font-weight:$font-weight-extrabold; color:#fff; margin-top:8px; }
+  &__sub { font-size:13px; color:rgba(255,255,255,.7); margin-top:2px; }
+  &__body { flex:1; padding:16px; overflow-y:auto; padding-bottom:100px; }
+  &__card { background:$color-card; border-radius:$radius-card; padding:16px; margin-bottom:12px; }
+  &__card-title { font-size:14px; font-weight:$font-weight-extrabold; color:$color-text; margin-bottom:14px; }
+  &__slider-row { margin-bottom:16px; }
+  &__slider-label { font-size:12px; font-weight:$font-weight-bold; color:$color-muted; text-transform:uppercase; letter-spacing:.5px; margin-bottom:8px; display:flex; justify-content:space-between; }
+  &__slider-val { color:$color-primary; font-size:14px; }
+  &__slider { width:100%; accent-color:$color-primary; height:6px; cursor:pointer; }
+  &__vehicle-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  &__v-btn { padding:12px 10px; border:2px solid $color-border; border-radius:$radius-card; background:$color-bg; cursor:pointer; text-align:center; font-family:$font-family; transition:all .18s;
+    &--sel { border-color:$color-primary; background:$color-primary-bg; }
+    div:first-child { font-size:24px; margin-bottom:4px; }
+    div:last-child { font-size:12px; font-weight:$font-weight-bold; color:$color-text; }
+  }
+  &__results { background:$color-dark; border-radius:$radius-card; padding:16px; margin-top:4px; }
+  &__results-title { font-size:12px; font-weight:$font-weight-bold; color:$color-accent-gold; text-transform:uppercase; letter-spacing:.5px; margin-bottom:12px; }
+  &__result-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; &:last-child { margin-bottom:0; } }
+  &__result-label { font-size:13px; color:rgba(255,255,255,.7); }
+  &__result-val { font-size:16px; font-weight:$font-weight-extrabold; color:#fff; &--gold { color:$color-accent-gold; } &--green { color:$color-accent-green; } }
+  &__co2-bar { margin-top:12px; background:rgba(255,255,255,.1); border-radius:4px; height:6px; overflow:hidden; }
+  &__co2-fill { height:100%; background:$color-accent-green; border-radius:4px; transition:width .4s ease; }
+}

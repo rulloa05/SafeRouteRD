@@ -1,0 +1,39 @@
+<div class="settings">
+  <div class="settings__head">
+    <div class="sbar light"><span>9:41</span><span>100%</span></div>
+    <button class="settings__back" routerLink="/profile/edit">← Volver</button>
+    <div class="settings__title">Configuración</div>
+  </div>
+  <div class="settings__body">
+    <div class="settings__section">
+      <div class="section-label">Navegación</div>
+      <div class="settings__menu-item" *ngFor="let s of navSettings">
+        <span class="settings__menu-icon">{{ s.icon }}</span>
+        <span class="settings__menu-text">{{ s.label }}</span>
+        <div class="settings__toggle" [class.settings__toggle--on]="s.on" (click)="s.on = !s.on"></div>
+      </div>
+    </div>
+    <div class="settings__section">
+      <div class="section-label">Notificaciones</div>
+      <div class="settings__menu-item" *ngFor="let s of notifSettings">
+        <span class="settings__menu-icon">{{ s.icon }}</span>
+        <span class="settings__menu-text">{{ s.label }}</span>
+        <div class="settings__toggle" [class.settings__toggle--on]="s.on" (click)="s.on = !s.on"></div>
+      </div>
+    </div>
+    <div class="settings__section">
+      <div class="section-label">General</div>
+      <div class="settings__menu-item" routerLink="/auth/vehicle-selection">
+        <span class="settings__menu-icon">🚗</span>
+        <span class="settings__menu-text">Cambiar tipo de vehículo</span>
+        <span style="color:#6c757d;font-size:16px">›</span>
+      </div>
+      <div class="settings__menu-item" routerLink="/profile/support">
+        <span class="settings__menu-icon">🎧</span>
+        <span class="settings__menu-text">Soporte técnico</span>
+        <span style="color:#6c757d;font-size:16px">›</span>
+      </div>
+    </div>
+  </div>
+  <app-bottom-nav active="profile"></app-bottom-nav>
+</div>

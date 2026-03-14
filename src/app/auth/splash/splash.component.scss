@@ -1,0 +1,94 @@
+@use 'variables' as *;
+
+// Matches prototype: linear-gradient(160deg, #0a1f2e 0%, #0d5a5e 55%, #0d3d20 100%)
+.splash {
+  display: flex; flex-direction: column; align-items: center;
+  min-height: 100dvh;
+  background: $gradient-splash;
+  cursor: pointer;
+  text-align: center;
+
+  &__content {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; padding: 8px 20px 0;
+  }
+
+  // Logo slot — dashed border box (prototype .logo-slot)
+  &__logo-slot {
+    width: 96px; height: 96px;
+    background: rgba(255,255,255,.07);
+    border: 2px dashed rgba(255,255,255,.25);
+    border-radius: 24px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    margin: 12px auto 0;
+    animation: fadeScale .8s ease-out;
+  }
+  &__logo-img {
+    width: 80px; height: 80px; object-fit: contain; border-radius: 16px;
+  }
+  &__logo-placeholder { font-size: 26px; }
+
+  // App name
+  &__name {
+    font-size: 28px; font-weight: $font-weight-extrabold;
+    color: #fff; letter-spacing: -.5px; line-height: 1.2;
+    margin-top: 16px;
+  }
+
+  // Tagline
+  &__tagline {
+    font-size: 13px; color: #8ecfbe; margin-top: 8px;
+    line-height: 1.6; padding: 0 20px;
+  }
+
+  // Pill tag (gold)
+  &__pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: $font-weight-semibold;
+    color: $color-accent-gold;
+    background: rgba(212,168,67,.15);
+    border: 1px solid rgba(212,168,67,.3);
+    padding: 7px 16px; border-radius: 20px; margin-top: 18px;
+  }
+
+  // Mini map placeholder
+  &__mini-map {
+    width: 240px; height: 150px; border-radius: 18px; overflow: hidden;
+    margin: 20px auto;
+    border: 1.5px solid rgba(255,255,255,.1);
+  }
+
+  // SDG row
+  &__sdg {
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(52,199,89,.1);
+    border: 1px solid rgba(52,199,89,.25);
+    padding: 9px 14px; border-radius: 12px;
+    font-size: 12px; color: #a0e6b4;
+    margin: 0 0 24px; text-align: left; width: 100%;
+  }
+  &__sdg-icon { font-size: 18px; flex-shrink: 0; }
+
+  // Slide dots
+  &__dots {
+    display: flex; gap: $space-sm; padding-bottom: $space-2xl;
+    margin-top: auto;
+  }
+  &__dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(255,255,255,.3);
+    transition: background .3s, transform .3s;
+    &--active { background: $color-accent-gold; transform: scale(1.3); }
+  }
+
+  // Buttons area
+  &__btns {
+    width: 100%; padding: 0 20px 28px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+}
+
+@keyframes fadeScale {
+  from { opacity: 0; transform: scale(.8); }
+  to   { opacity: 1; transform: scale(1); }
+}

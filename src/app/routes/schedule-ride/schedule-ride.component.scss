@@ -1,0 +1,15 @@
+@use 'variables' as *;
+.schedule { display:flex; flex-direction:column; min-height:100dvh; background:$color-bg;
+  &__head { background:linear-gradient(135deg,$color-primary,$color-primary-dark); padding:0 20px 20px; }
+  &__back { display:inline-flex; align-items:center; gap:6px; color:rgba(255,255,255,.7); font-size:13px; cursor:pointer; background:none; border:none; padding:0; margin-top:4px; font-family:$font-family; }
+  &__title { font-size:20px; font-weight:$font-weight-extrabold; color:#fff; margin-top:8px; }
+  &__body { flex:1; padding:16px; overflow-y:auto; padding-bottom:100px; }
+  &__card { background:$color-card; border-radius:$radius-card; padding:16px; margin-bottom:12px; }
+  &__card-title { font-size:14px; font-weight:$font-weight-extrabold; color:$color-text; margin-bottom:14px; }
+  &__datetime-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px; }
+  &__toggle-item { display:flex; align-items:center; justify-content:space-between; padding:10px 0; border-bottom:1px solid $color-border; font-size:13px; color:$color-text; &:last-child { border-bottom:none; } }
+  &__toggle { width:44px; height:24px; background:$color-border; border-radius:12px; position:relative; cursor:pointer; transition:background .2s; &--on { background:$color-primary; } &::after { content:''; position:absolute; width:20px; height:20px; background:#fff; border-radius:50%; top:2px; left:2px; transition:transform .2s; } &--on::after { transform:translateX(20px); } }
+  &__preview { background:$color-primary-bg; border:1px solid rgba(13,115,119,.2); border-radius:$radius-card; padding:14px; margin-top:12px; }
+  &__preview-title { font-size:12px; font-weight:$font-weight-bold; color:$color-primary-dark; margin-bottom:8px; text-transform:uppercase; letter-spacing:.5px; }
+  &__preview-row { display:flex; justify-content:space-between; font-size:13px; color:$color-text; margin-bottom:4px; }
+}

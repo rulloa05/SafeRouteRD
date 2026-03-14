@@ -1,0 +1,30 @@
+@use 'variables' as *;
+.route-detail { display:flex; flex-direction:column; min-height:100dvh; background:$color-bg;
+  &__head { background:linear-gradient(135deg,$color-primary,$color-primary-dark); padding:0 20px 20px; }
+  &__back { display:inline-flex; align-items:center; gap:6px; color:rgba(255,255,255,.7); font-size:13px; cursor:pointer; background:none; border:none; padding:0; margin-top:4px; font-family:$font-family; }
+  &__name { font-size:18px; font-weight:$font-weight-extrabold; color:#fff; margin-top:8px; }
+  &__meta { font-size:12px; color:rgba(255,255,255,.75); margin-top:4px; }
+  &__stats { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; padding:14px 16px; }
+  &__stat { background:$color-card; border-radius:$radius-card; padding:14px; text-align:center; }
+  &__stat-val { font-size:20px; font-weight:$font-weight-extrabold; color:$color-primary; }
+  &__stat-lbl { font-size:11px; color:$color-muted; margin-top:2px; }
+  &__map-wrap { height:220px; position:relative; }
+  &__map-el { position:absolute; inset:0; }
+  &__section { padding:14px 16px; }
+  &__section-title { font-size:14px; font-weight:$font-weight-bold; color:$color-text; margin-bottom:10px; }
+  &__cond-card { background:$color-card; border-radius:$radius-card; padding:14px; margin-bottom:8px; display:flex; align-items:center; gap:12px; }
+  &__cond-icon { font-size:24px; flex-shrink:0; }
+  &__cond-name { font-size:13px; font-weight:$font-weight-bold; color:$color-text; }
+  &__cond-desc { font-size:11px; color:$color-muted; margin-top:2px; }
+  &__tag { font-size:11px; font-weight:$font-weight-bold; padding:4px 10px; border-radius:8px;
+    &--ok   { background:$color-green-light; color:#1a8c3a; }
+    &--warn { background:$color-gold-light; color:$color-gold-dark; }
+    &--bad  { background:$color-red-light; color:$color-accent-red; }
+  }
+  &__alt { background:$color-bg; border:1px solid $color-border; border-radius:$radius-card; padding:12px; margin-bottom:8px; cursor:pointer; display:flex; align-items:center; gap:10px; transition:border-color .15s; &:hover { border-color:$color-primary; } }
+  &__alt-dot { width:10px; height:10px; border-radius:50%; &--o { background:$color-orange; } &--r { background:$color-accent-red; } }
+  &__alt-name { font-size:13px; font-weight:$font-weight-bold; color:$color-text; }
+  &__alt-meta { font-size:11px; color:$color-muted; margin-top:2px; }
+  &__bot { padding:12px 16px 28px; background:$color-card; border-top:1px solid $color-border; display:flex; gap:10px; }
+  &__emergency { flex:1; padding:14px; border:1.5px solid $color-accent-red; border-radius:$radius-card; background:$color-red-light; font-size:13px; font-weight:$font-weight-bold; color:$color-accent-red; cursor:pointer; text-align:center; font-family:$font-family; }
+}

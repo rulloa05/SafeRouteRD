@@ -1,0 +1,18 @@
+<nav class="bnav">
+  <button class="bnav__item" [class.bnav__item--active]="active==='map'" (click)="nav('/map')">
+    <span class="bnav__icon" [innerHTML]="icons.navMap"></span>
+    <span class="bnav__label">Mapa</span>
+  </button>
+  <button class="bnav__item" [class.bnav__item--active]="active==='search' || active==='destination'" (click)="nav('/map/destination')">
+    <span class="bnav__icon" [innerHTML]="icons.navSearch"></span>
+    <span class="bnav__label">Buscar</span>
+  </button>
+  <button class="bnav__item" [class.bnav__item--active]="active==='routes' || active==='bookings'" (click)="nav('/routes/bookings')">
+    <span class="bnav__icon" [innerHTML]="icons.navHistory"></span>
+    <span class="bnav__label">Historial</span>
+  </button>
+  <button class="bnav__item" [class.bnav__item--active]="active==='profile'" (click)="nav('/profile/edit')">
+    <span class="bnav__icon" [innerHTML]="icons.navProfile"></span>
+    <span class="bnav__label">Perfil</span>
+  </button>
+</nav>

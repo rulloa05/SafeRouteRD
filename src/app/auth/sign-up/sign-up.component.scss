@@ -1,0 +1,23 @@
+@use 'variables' as *;
+
+.signup {
+  display: flex; flex-direction: column; min-height: 100dvh; background: $color-bg;
+
+  &__head {
+    background: linear-gradient(135deg, $color-primary, $color-primary-dark);
+    padding: 0 24px 24px;
+  }
+
+  &__back {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: rgba(255,255,255,.7); font-size: 13px; cursor: pointer;
+    background: none; border: none; padding: 0; margin-top: 4px; font-family: $font-family;
+    &:hover { color: #fff; }
+  }
+
+  &__card {
+    background: $color-card;
+    border-radius: $radius-2xl $radius-2xl 0 0;
+    padding: 24px; flex: 1; overflow-y: auto;
+  }
+}

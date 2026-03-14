@@ -1,0 +1,26 @@
+@use 'variables' as *;
+
+@mixin screen-shell {
+  width: 100%;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+@mixin mobile  { @media (max-width: 480px)  { @content; } }
+@mixin tablet  { @media (min-width: 768px)  { @content; } }
+@mixin desktop { @media (min-width: 1024px) { @content; } }
+
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin card {
+  background: $color-card;
+  border-radius: $radius-card;
+  box-shadow: $shadow-card;
+  padding: 16px;
+}

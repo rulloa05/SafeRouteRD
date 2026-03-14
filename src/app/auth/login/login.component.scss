@@ -1,0 +1,78 @@
+@use 'variables' as *;
+
+.login {
+  display: flex; flex-direction: column; min-height: 100dvh;
+  background: $color-dark;
+
+  &__head {
+    background: linear-gradient(160deg, $color-dark, $color-primary-dark);
+    padding: 0 24px 32px;
+    display: flex; flex-direction: column; align-items: center;
+  }
+
+  &__logo-slot {
+    width: 80px; height: 80px;
+    background: rgba(255,255,255,.07);
+    border: 2px dashed rgba(255,255,255,.2);
+    border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 12px; font-size: 26px;
+  }
+
+  &__brand {
+    font-size: 15px; font-weight: $font-weight-bold;
+    color: rgba(255,255,255,.9);
+  }
+
+  &__card {
+    background: $color-card;
+    border-radius: $radius-2xl $radius-2xl 0 0;
+    padding: 28px 24px;
+    flex: 1;
+  }
+
+  &__title {
+    font-size: 22px; font-weight: $font-weight-extrabold;
+    color: $color-text; margin-bottom: 6px;
+  }
+  &__sub {
+    font-size: 13px; color: $color-muted; margin-bottom: 20px;
+  }
+
+  &__forgot {
+    font-size: 13px; color: $color-primary; font-weight: $font-weight-semibold;
+    text-align: right; display: block; margin-bottom: 20px; cursor: pointer;
+  }
+
+  &__terms {
+    display: flex; align-items: center; gap: $space-sm;
+    font-size: 13px; color: $color-muted; cursor: pointer; margin-bottom: 16px;
+    input { accent-color: $color-primary; width: 16px; height: 16px; cursor: pointer; }
+  }
+
+  &__divider {
+    text-align: center; font-size: 12px; color: $color-muted;
+    margin: 16px 0; position: relative;
+    &::before, &::after {
+      content: ''; position: absolute; top: 50%; width: 42%; height: 1px; background: $color-border;
+    }
+    &::before { left: 0; }
+    &::after  { right: 0; }
+  }
+
+  &__social-row { display: flex; gap: 12px; margin-bottom: 16px; }
+
+  &__social-btn {
+    flex: 1; padding: 12px; border: 1.5px solid $color-border;
+    border-radius: $radius-md; background: $color-bg; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    font-size: 13px; font-weight: $font-weight-semibold; color: $color-text;
+    font-family: $font-family;
+    &:hover { border-color: $color-primary; }
+  }
+
+  &__footer {
+    font-size: 13px; color: $color-muted; text-align: center;
+    a { color: $color-primary; font-weight: $font-weight-bold; cursor: pointer; }
+  }
+}
