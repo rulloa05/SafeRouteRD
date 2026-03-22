@@ -1,0 +1,27 @@
+<div class="verify">
+  <div class="verify__head">
+    <div class="sbar light"><span>9:41</span><span>100%</span></div>
+    <button class="verify__back" routerLink="/auth/sign-up">← Volver</button>
+    <div class="verify__title">Verificar cuenta</div>
+    <div class="verify__sub">Elige cómo recibir tu código</div>
+  </div>
+  <div class="verify__card">
+    <div class="verify__label">Selecciona un método de verificación:</div>
+    <div class="verify__options">
+      <div class="verify__option" [class.verify__option--sel]="selected==='sms'" (click)="selected='sms'">
+        <span class="verify__option-icon">📱</span>
+        <div><div class="verify__option-title">SMS al teléfono</div>
+          <div class="verify__option-sub">Te enviamos un código de 6 dígitos</div></div>
+        <div class="verify__radio" [class.verify__radio--sel]="selected==='sms'"></div>
+      </div>
+      <div class="verify__option" [class.verify__option--sel]="selected==='email'" (click)="selected='email'">
+        <span class="verify__option-icon">📧</span>
+        <div><div class="verify__option-title">Correo electrónico</div>
+          <div class="verify__option-sub">Te enviamos un enlace de verificación</div></div>
+        <div class="verify__radio" [class.verify__radio--sel]="selected==='email'"></div>
+      </div>
+    </div>
+    <button class="btn btn-primary" (click)="onSend()">Enviar código</button>
+    <div class="verify__skip" (click)="onSkip()">Omitir por ahora →</div>
+  </div>
+</div>

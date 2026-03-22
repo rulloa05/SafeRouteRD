@@ -1,0 +1,147 @@
+@use 'variables' as *;
+
+.bookings {
+  display: flex; flex-direction: column; min-height: 100dvh;
+  background: transparent;
+  padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+
+  // ── Tabs ──
+  &__tabs {
+    display: flex;
+    background: rgba(8,14,36,.72);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border-bottom: 1px solid rgba(255,255,255,.1);
+    gap: 4px; padding: 8px 12px 0; flex-shrink: 0;
+  }
+  &__tab {
+    flex: 1; padding: 10px 12px;
+    font-size: 13px; font-weight: $font-weight-semibold;
+    color: rgba(255,255,255,.4);
+    background: none; border: none; border-bottom: 2px solid transparent;
+    cursor: pointer; font-family: $font-family;
+    transition: color .15s, border-color .15s;
+    margin-bottom: -1px; border-radius: 8px 8px 0 0;
+    &--active {
+      color: rgba(13,185,150,.9);
+      border-bottom-color: rgba(13,185,150,.7);
+      background: rgba(13,185,150,.06);
+    }
+  }
+
+  // ── List container ──
+  &__list {
+    flex: 1; padding: 16px 16px 8px;
+    display: flex; flex-direction: column; gap: 12px;
+    overflow-y: auto;
+  }
+
+  // ── Empty state ──
+  &__empty {
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; padding: 60px 24px; text-align: center;
+  }
+  &__empty-icon { font-size: 52px; margin-bottom: 16px; opacity: .7; }
+  &__empty p {
+    font-size: 15px; font-weight: $font-weight-bold;
+    color: rgba(255,255,255,.7); margin: 0;
+  }
+  &__empty-sub {
+    font-size: 13px !important;
+    color: rgba(255,255,255,.35) !important;
+    margin-top: 6px !important; font-weight: normal !important;
+  }
+
+  // ── Spinner ──
+  &__spinner {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 3px solid rgba(13,185,150,.2);
+    border-top-color: rgba(13,185,150,.8);
+    animation: bk-spin .7s linear infinite;
+    margin: 40px auto;
+  }
+  @keyframes bk-spin { to { transform: rotate(360deg); } }
+
+  // ── Card ──
+  &__card {
+    background: rgba(255,255,255,.07);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid rgba(255,255,255,.12);
+    box-shadow: 0 4px 20px rgba(0,0,0,.25), inset 0 1.5px 0 rgba(255,255,255,.1);
+    border-radius: $radius-card;
+    padding: 14px 16px;
+    transition: transform .15s, box-shadow .15s;
+    &:active { transform: scale(.99); }
+  }
+
+  &__card-top {
+    display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px;
+  }
+
+  &__route-icon {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(13,115,119,.3);
+    border: 1px solid rgba(13,185,150,.25);
+    box-shadow: 0 0 16px rgba(13,115,119,.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+  }
+
+  &__route-info { flex: 1; min-width: 0; }
+  &__route-name {
+    font-size: 14px; font-weight: $font-weight-bold;
+    color: rgba(255,255,255,.9);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  &__route-detail {
+    font-size: 12px; color: rgba(255,255,255,.45); margin-top: 3px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+
+  // ── Badge ──
+  &__badge {
+    font-size: 11px; font-weight: $font-weight-bold;
+    padding: 4px 10px; border-radius: 20px; flex-shrink: 0;
+    backdrop-filter: blur(8px);
+    &--green {
+      background: rgba(52,199,89,.18);
+      border: 1px solid rgba(52,199,89,.35);
+      color: rgba(52,199,89,.9);
+    }
+    &--blue {
+      background: rgba(13,115,119,.25);
+      border: 1px solid rgba(13,185,150,.35);
+      color: rgba(13,185,150,.9);
+    }
+  }
+
+  // ── Card bottom row ──
+  &__card-bottom {
+    display: flex; gap: 14px; flex-wrap: wrap;
+    font-size: 12px; color: rgba(255,255,255,.5);
+    padding-top: 10px;
+    border-top: 1px solid rgba(255,255,255,.08);
+  }
+
+  // ── Vehicle row ──
+  &__vehicle-row {
+    font-size: 11px; color: rgba(13,185,150,.7);
+    margin-top: 6px; font-weight: $font-weight-semibold;
+  }
+
+  // ── Clear button ──
+  &__clear { padding: 4px 0 8px; text-align: center; }
+  &__clear-btn {
+    background: rgba(231,76,60,.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(231,76,60,.3);
+    color: rgba(231,76,60,.8);
+    padding: 10px 24px; border-radius: 100px;
+    font-size: 13px; font-weight: $font-weight-semibold;
+    cursor: pointer; font-family: $font-family;
+    transition: background .15s;
+    &:active { background: rgba(231,76,60,.2); }
+  }
+}

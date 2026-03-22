@@ -1,0 +1,18 @@
+@use 'variables' as *;
+.support { display:flex; flex-direction:column; min-height:100dvh; background:$color-bg;
+  &__head { background:linear-gradient(135deg,$color-primary,$color-primary-dark); padding:0 20px 20px; }
+  &__back { display:inline-flex; align-items:center; gap:6px; color:rgba(255,255,255,.7); font-size:13px; cursor:pointer; background:none; border:none; padding:0; margin-top:4px; font-family:$font-family; }
+  &__title { font-size:20px; font-weight:$font-weight-extrabold; color:#fff; margin-top:8px; }
+  &__sub { font-size:13px; color:rgba(255,255,255,.7); margin-top:2px; }
+  &__body { flex:1; padding:16px; overflow-y:auto; padding-bottom:100px; }
+  &__faq-item { background:$color-card; border-radius:$radius-card; margin-bottom:8px; overflow:hidden; }
+  &__faq-trigger { display:flex; justify-content:space-between; align-items:center; padding:14px 16px; cursor:pointer; background:none; border:none; width:100%; font-size:14px; font-weight:$font-weight-semibold; color:$color-text; font-family:$font-family; text-align:left; }
+  &__faq-arrow { font-size:12px; color:$color-muted; transition:transform .2s; &--open { transform:rotate(180deg); } }
+  &__faq-answer { padding:0 16px 14px; font-size:13px; color:$color-muted; line-height:1.6; }
+  &__form-card { background:$color-card; border-radius:$radius-card; padding:16px; margin-bottom:12px; }
+  &__form-title { font-size:14px; font-weight:$font-weight-extrabold; color:$color-text; margin-bottom:14px; }
+  &__select { width:100%; padding:13px 14px; border:1.5px solid $color-border; border-radius:$radius-md; font-size:14px; color:$color-text; background:$color-bg; outline:none; font-family:$font-family; margin-bottom:14px; }
+  &__textarea { width:100%; padding:13px 14px; border:1.5px solid $color-border; border-radius:$radius-md; font-size:14px; color:$color-text; background:$color-bg; outline:none; font-family:$font-family; resize:none; &:focus { border-color:$color-primary; } }
+  &__contact-card { background:$color-primary-bg; border:1px solid rgba(13,115,119,.2); border-radius:$radius-card; padding:14px; }
+  &__contact-item { display:flex; align-items:center; gap:10px; font-size:13px; color:$color-text; margin-bottom:8px; &:last-child { margin-bottom:0; } span:first-child { font-size:18px; } }
+}

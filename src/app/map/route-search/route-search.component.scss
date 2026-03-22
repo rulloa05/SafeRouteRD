@@ -1,0 +1,120 @@
+@use 'variables' as *;
+
+.route-search {
+  display: flex; flex-direction: column; min-height: 100dvh;
+  background: transparent; /* aurora from app-root */
+
+  &__head {
+    background: rgba(6, 10, 24, 0.08);
+    backdrop-filter: blur(20px) saturate(240%) brightness(1.06);
+    -webkit-backdrop-filter: blur(20px) saturate(240%) brightness(1.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+    padding: 0 20px 20px;
+    box-shadow:
+      0 4px 24px rgba(0,0,0,.18),
+      inset 0 -1px 0 rgba(255,255,255,.10),
+      inset 0 1.5px 0 rgba(255,255,255,.35);
+  }
+
+  &__back {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: rgba(255,255,255,.6); font-size: 13px; cursor: pointer;
+    background: none; border: none; padding: 0; margin-top: 4px;
+    font-family: $font-family;
+    &:hover { color: #fff; }
+  }
+
+  &__title {
+    font-size: 18px; font-weight: $font-weight-extrabold;
+    color: #fff; margin-top: 8px;
+  }
+
+  &__sub {
+    font-size: 12px; color: rgba(255,255,255,.5); margin-top: 2px;
+  }
+
+  /* Vehicle chip */
+  &__vehicle-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(13,115,119,.3);
+    border: 1px solid rgba(13,185,150,.3);
+    border-radius: 20px; padding: 6px 14px; margin-top: 10px;
+    font-size: 13px; font-weight: $font-weight-bold;
+    color: rgba(255,255,255,.9);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.12);
+
+    &__osrm {
+      margin-left: auto; font-weight: $font-weight-regular;
+      color: rgba(255,255,255,.4);
+    }
+  }
+
+  &__body { flex: 1; padding: 16px 16px 96px; }
+
+  &__section-title {
+    font-size: 14px; font-weight: $font-weight-extrabold;
+    color: rgba(255,255,255,.85); margin-bottom: 12px;
+  }
+
+  /* Glass route card — cristalino */
+  &__card {
+    background: rgba(255,255,255,.04);
+    backdrop-filter: blur(7px) saturate(280%) brightness(1.14);
+    -webkit-backdrop-filter: blur(7px) saturate(280%) brightness(1.14);
+    border: 1px solid rgba(255,255,255,.40);
+    box-shadow:
+      0 4px 20px rgba(0,0,0,.22),
+      inset 0 1.5px 0 rgba(255,255,255,.55);
+    border-radius: 20px;
+    padding: 16px; margin-bottom: 10px; cursor: pointer;
+    position: relative; overflow: hidden;
+    transition: all .18s;
+
+    /* Lente convexa */
+    &::before {
+      content: '';
+      position: absolute; inset: 0; border-radius: 20px;
+      background: radial-gradient(ellipse 85% 55% at 50% -8%, rgba(255,255,255,.22) 0%, rgba(255,255,255,.07) 40%, transparent 65%);
+      pointer-events: none; z-index: 0;
+    }
+    > * { position: relative; z-index: 1; }
+
+    &:active { background: rgba(255,255,255,.08); transform: scale(.98); }
+
+    &--best {
+      background: rgba(13,115,119,.15);
+      border-color: rgba(13,185,150,.45);
+      box-shadow:
+        0 4px 20px rgba(13,115,119,.22),
+        inset 0 1.5px 0 rgba(255,255,255,.45);
+    }
+  }
+
+  &__dot {
+    width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0;
+    &--g { background: rgba(13,185,150,.9);  box-shadow: 0 0 8px rgba(13,185,150,.5); }
+    &--o { background: rgba(230,126,34,.9); box-shadow: 0 0 8px rgba(230,126,34,.4); }
+    &--r { background: rgba(231,76,60,.9);  box-shadow: 0 0 8px rgba(231,76,60,.4); }
+  }
+
+  &__name { font-size: 14px; font-weight: $font-weight-bold; color: rgba(255,255,255,.9); }
+  &__meta { font-size: 12px; color: rgba(255,255,255,.4); margin-top: 4px; }
+
+  &__badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+
+  &__badge {
+    font-size: 11px; font-weight: $font-weight-bold; padding: 3px 10px; border-radius: 8px;
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    &--green { background: rgba(13,115,119,.25); color: rgba(13,185,150,.9); border: 1px solid rgba(13,185,150,.2); }
+    &--gold  { background: rgba(212,168,67,.15); color: rgba(212,168,67,.9); border: 1px solid rgba(212,168,67,.2); }
+    &--red   { background: rgba(231,76,60,.15);  color: rgba(231,76,60,.9);  border: 1px solid rgba(231,76,60,.2); }
+  }
+
+  &__compat {
+    font-size: 11px; font-weight: $font-weight-bold; padding: 3px 10px; border-radius: 8px;
+    background: rgba(52,199,89,.12); color: rgba(52,199,89,.9);
+    border: 1px solid rgba(52,199,89,.2); white-space: nowrap;
+  }
+}

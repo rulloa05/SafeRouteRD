@@ -1,0 +1,94 @@
+// ── SafeRoutes Guardian Design Tokens — v2 (HTML prototype fidelity) ──
+
+// Brand colors (identical to prototype CSS vars)
+$color-primary:       #0d7377;
+$color-primary-dark:  #065a5e;
+$color-primary-light: #3a9fa3;
+$color-primary-bg:    #e6f4f4;   // --primary-bg in prototype
+$color-accent-gold:   #d4a843;
+$color-gold-light:    #fdf3d8;
+$color-gold-dark:     #a07820;
+$color-accent-green:  #34c759;
+$color-green-light:   #e8faf0;
+$color-accent-red:    #e74c3c;
+$color-red-light:     #fdecea;
+$color-orange:        #e67e22;
+$color-orange-light:  #fef3e8;
+
+// Dark surface (--dark in prototype)
+$color-dark:          #1a2a3a;
+$color-dark-deep:     #0d1b2a;
+
+// Neutrals (matching prototype exactly)
+$color-white:         #ffffff;
+$color-bg:            #f8f9fa;   // --bg
+$color-card:          #ffffff;   // --card
+$color-border:        #dee2e6;   // --border
+$color-text:          #212529;   // --text
+$color-muted:         #6c757d;   // --muted
+
+// Legacy aliases (keep existing code working)
+$color-gray-50:  #f8f9fa;
+$color-gray-100: #f1f3f5;
+$color-gray-200: #e9ecef;
+$color-gray-300: #dee2e6;
+$color-gray-400: #ced4da;
+$color-gray-500: #adb5bd;
+$color-gray-600: #6c757d;
+$color-gray-700: #495057;
+$color-gray-800: #343a40;
+$color-gray-900: #212529;
+$color-black:    #000000;
+
+// Gradients (matching prototype)
+$gradient-primary: linear-gradient(135deg, $color-primary-light 0%, $color-primary 50%, $color-primary-dark 100%);
+$gradient-dark:    linear-gradient(160deg, $color-dark 0%, $color-primary-dark 100%);
+$gradient-splash:  linear-gradient(160deg, #0a1f2e 0%, #0d5a5e 55%, #0d3d20 100%);
+
+// Shadows
+$shadow-card:     0 2px 12px rgba(0, 0, 0, 0.08);
+$shadow-elevated: 0 8px 24px rgba(0, 0, 0, 0.12);
+$shadow-button:   0 4px 12px rgba($color-primary, 0.3);
+$shadow-map:      0 3px 16px rgba(0, 0, 0, 0.15);
+
+// Border radius (matching prototype)
+$radius-xs:     8px;
+$radius-sm:     10px;
+$radius-md:     12px;
+$radius-card:   14px;   // prototype .vcard, .cond-card
+$radius-lg:     18px;   // prototype .vcard, panels
+$radius-xl:     24px;   // bottom sheets
+$radius-2xl:    28px;   // prototype .login-card
+$radius-pill:   50px;
+$radius-circle: 50%;
+
+// Typography
+$font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+$font-size-xs:   0.6875rem; // 11px
+$font-size-sm:   0.8125rem; // 13px  ← prototype base small text
+$font-size-base: 0.9375rem; // 15px  ← prototype input / body
+$font-size-md:   1rem;      // 16px
+$font-size-lg:   1.125rem;  // 18px
+$font-size-xl:   1.25rem;   // 20px
+$font-size-2xl:  1.375rem;  // 22px
+$font-size-3xl:  1.75rem;   // 28px
+$font-weight-regular:  400;
+$font-weight-medium:   500;
+$font-weight-semibold: 600;
+$font-weight-bold:     700;
+$font-weight-extrabold:800;
+
+// Spacing
+$space-xs:  4px;
+$space-sm:  8px;
+$space-md:  16px;
+$space-lg:  24px;
+$space-xl:  32px;
+$space-2xl: 48px;
+
+// Z-index
+$z-drawer:  1000;
+$z-overlay: 900;
+$z-header:  800;
+$z-fab:     700;
+$z-map:     1;

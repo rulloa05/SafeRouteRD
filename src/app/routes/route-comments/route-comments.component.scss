@@ -1,0 +1,18 @@
+@use 'variables' as *;
+.route-comments { display:flex; flex-direction:column; min-height:100dvh; background:$color-bg;
+  &__head { background:linear-gradient(135deg,$color-primary,$color-primary-dark); padding:0 20px 20px; }
+  &__back { display:inline-flex; align-items:center; gap:6px; color:rgba(255,255,255,.7); font-size:13px; cursor:pointer; background:none; border:none; padding:0; margin-top:4px; font-family:$font-family; }
+  &__title { font-size:20px; font-weight:$font-weight-extrabold; color:#fff; margin-top:8px; }
+  &__summary { background:$color-card; padding:16px; display:flex; align-items:center; gap:14px; border-bottom:1px solid $color-border; }
+  &__avg { font-size:36px; font-weight:$font-weight-extrabold; color:$color-text; }
+  &__stars { font-size:18px; }
+  &__star-count { font-size:12px; color:$color-muted; margin-top:2px; }
+  &__body { flex:1; padding:16px; overflow-y:auto; padding-bottom:100px; }
+  &__comment { background:$color-card; border-radius:$radius-card; padding:14px; margin-bottom:10px; }
+  &__comment-head { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+  &__avatar { width:36px; height:36px; border-radius:50%; background:$color-primary; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:$font-weight-bold; color:#fff; flex-shrink:0; }
+  &__user-name { font-size:13px; font-weight:$font-weight-bold; color:$color-text; }
+  &__user-date { font-size:11px; color:$color-muted; margin-top:1px; }
+  &__comment-stars { margin-left:auto; font-size:13px; }
+  &__comment-text { font-size:13px; color:$color-text; line-height:1.6; }
+}

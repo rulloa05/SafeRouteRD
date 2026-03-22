@@ -1,0 +1,47 @@
+@use 'variables' as *;
+
+.icon-input {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+  border-radius: $radius-md;
+  padding: 13px 14px;
+  transition: border-color .15s, background .15s, box-shadow .15s;
+
+  &:focus-within {
+    border-color: rgba(13, 185, 150, 0.6);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 3px rgba(13, 115, 119, 0.18), inset 0 1px 0 rgba(255,255,255,.08);
+  }
+
+  &--error { border-color: rgba(231, 76, 60, 0.5); }
+
+  &__icon {
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 16px; flex-shrink: 0;
+    display: flex; align-items: center;
+  }
+
+  input {
+    flex: 1; border: none; background: transparent;
+    font-size: $font-size-base;
+    color: rgba(255, 255, 255, 0.88);
+    outline: none; font-family: $font-family;
+    &::placeholder { color: rgba(255, 255, 255, 0.28); }
+  }
+
+  &__clear {
+    background: none; border: none; cursor: pointer;
+    color: rgba(255,255,255,.3); font-size: 16px; padding: 0;
+    display: flex; align-items: center;
+    &:hover { color: rgba(255,255,255,.6); }
+  }
+}
+
+.icon-input__error {
+  display: block; font-size: 11px; color: rgba(231,76,60,.85);
+  margin-top: 4px; padding-left: 2px;
+}

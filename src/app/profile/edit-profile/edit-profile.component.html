@@ -1,0 +1,44 @@
+<div class="edit-profile">
+  <div class="edit-profile__head">
+    <div class="sbar light"><span>9:41</span><span>100%</span></div>
+    <button class="edit-profile__back" routerLink="/map">← Volver</button>
+    <div class="edit-profile__avatar">{{ initials }}</div>
+    <div class="edit-profile__name">{{ displayName }}</div>
+    <div class="edit-profile__email">{{ displayEmail }}</div>
+    <div class="edit-profile__v-badge">{{ vehicleIcon }} {{ vehicleLabel }}</div>
+  </div>
+
+  <div class="edit-profile__card">
+    <form [formGroup]="form" (ngSubmit)="onSave()">
+      <div class="field"><label>Nombre completo</label><input formControlName="fullName"/></div>
+      <div class="field"><label>Correo electrónico</label><input type="email" formControlName="email"/></div>
+      <div class="field"><label>Teléfono</label><input type="tel" formControlName="phone"/></div>
+      <div class="field"><label>Ciudad / Sector</label><input formControlName="stateCity"/></div>
+      <button class="btn btn-primary" type="submit">Guardar cambios</button>
+    </form>
+
+    <div class="edit-profile__section" style="margin-top:20px">
+      <div class="section-label">Cuenta</div>
+      <div class="edit-profile__menu-item" routerLink="/profile/settings">
+        <span class="edit-profile__menu-icon">⚙️</span>
+        <span class="edit-profile__menu-text">Configuración</span>
+        <span class="edit-profile__menu-arrow">›</span>
+      </div>
+      <div class="edit-profile__menu-item" routerLink="/profile/support">
+        <span class="edit-profile__menu-icon">🎧</span>
+        <span class="edit-profile__menu-text">Soporte</span>
+        <span class="edit-profile__menu-arrow">›</span>
+      </div>
+      <div class="edit-profile__menu-item" routerLink="/routes/bookings">
+        <span class="edit-profile__menu-icon">📋</span>
+        <span class="edit-profile__menu-text">Mis viajes</span>
+        <span class="edit-profile__menu-arrow">›</span>
+      </div>
+    </div>
+
+    <button class="edit-profile__logout" (click)="onLogout()">🚪 Cerrar sesión</button>
+  </div>
+
+  <div class="edit-profile__toast" *ngIf="toastMsg">{{ toastMsg }}</div>
+  <app-bottom-nav active="profile"></app-bottom-nav>
+</div>

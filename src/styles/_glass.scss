@@ -1,0 +1,171 @@
+// ── Liquid Glass Design System — Crystalline Edition ─────────────────
+// Principio: menos blur → más transparente, más saturación → efecto lente
+
+// ── Mixins base ───────────────────────────────────────────────────────
+
+// Cristal claro — muy transparente, mucho color, efecto lente convexo
+@mixin glass($opacity: 0.04, $blur: 7px, $sat: 280%) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur($blur) saturate($sat) brightness(1.14);
+  -webkit-backdrop-filter: blur($blur) saturate($sat) brightness(1.14);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.28),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.60),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+}
+
+// Glass fuerte (modales, cards principales)
+@mixin glass-strong($opacity: 0.05, $blur: 10px) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur($blur) saturate(300%) brightness(1.12);
+  -webkit-backdrop-filter: blur($blur) saturate(300%) brightness(1.12);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow:
+    0 12px 48px rgba(0, 0, 0, 0.38),
+    inset 0 2px 0 rgba(255, 255, 255, 0.65),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+}
+
+// Glass oscuro (panels flotantes sobre el mapa) — cristalino, casi invisible
+@mixin glass-dark($opacity: 0.10, $blur: 20px) {
+  background: rgba(6, 10, 25, $opacity);
+  backdrop-filter: blur($blur) saturate(240%) brightness(1.05);
+  -webkit-backdrop-filter: blur($blur) saturate(240%) brightness(1.05);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.30),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.40),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.06);
+}
+
+// Glass teal tintado
+@mixin glass-teal($opacity: 0.20, $blur: 16px) {
+  background: rgba(13, 115, 119, $opacity);
+  backdrop-filter: blur($blur) saturate(240%) brightness(1.1);
+  -webkit-backdrop-filter: blur($blur) saturate(240%) brightness(1.1);
+  border: 1px solid rgba(13, 185, 150, 0.45);
+  box-shadow:
+    0 6px 24px rgba(13, 115, 119, 0.3),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.35);
+}
+
+// Input glass
+@mixin glass-input {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px) saturate(260%) brightness(1.08);
+  -webkit-backdrop-filter: blur(6px) saturate(260%) brightness(1.08);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  color: rgba(255, 255, 255, 0.9);
+  box-shadow: inset 0 1.5px 0 rgba(255,255,255,.22);
+  &::placeholder { color: rgba(255, 255, 255, 0.32); }
+  &:focus {
+    border-color: rgba(13, 185, 150, 0.7);
+    background: rgba(255, 255, 255, 0.08);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(13, 115, 119, 0.22), inset 0 1.5px 0 rgba(255,255,255,.25);
+  }
+}
+
+// ── Efecto lente convexo ──────────────────────────────────────────────
+// Agrega zoom óptico: gradiente radial que simula la refracción de vidrio
+// Úsalo en el elemento o en ::before del contenedor
+@mixin glass-lens-overlay {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  // Lente convexa: brillo en parte superior y reflejo lateral
+  background:
+    radial-gradient(
+      ellipse 85% 55% at 50% -8%,
+      rgba(255, 255, 255, 0.26) 0%,
+      rgba(255, 255, 255, 0.10) 38%,
+      transparent 62%
+    ),
+    radial-gradient(
+      ellipse 45% 35% at 12% 8%,
+      rgba(255, 255, 255, 0.16) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 30% 20% at 88% 12%,
+      rgba(255, 255, 255, 0.10) 0%,
+      transparent 50%
+    );
+  z-index: 0;
+}
+
+// Wrapper mixin: glass + lente (requiere position: relative en el elemento)
+@mixin glass-with-lens($opacity: 0.04, $blur: 7px, $sat: 280%) {
+  @include glass($opacity, $blur, $sat);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    @include glass-lens-overlay;
+  }
+  > * { position: relative; z-index: 1; }
+}
+
+// ── Utilidades ────────────────────────────────────────────────────────
+.glass         { @include glass; }
+.glass-strong  { @include glass-strong; }
+.glass-dark    { @include glass-dark; }
+.glass-teal    { @include glass-teal; }
+.glass-lens    {
+  position: relative; overflow: hidden;
+  &::before { @include glass-lens-overlay; }
+  > * { position: relative; z-index: 1; }
+}
+
+// ── Texto sobre cristal ───────────────────────────────────────────────
+.glass-text-primary   { color: rgba(255, 255, 255, 0.95); }
+.glass-text-secondary { color: rgba(255, 255, 255, 0.65); }
+.glass-text-muted     { color: rgba(255, 255, 255, 0.4); }
+.glass-text-label     {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.6px;
+}
+
+// ── Aurora background ─────────────────────────────────────────────────
+$aurora-bg:
+  radial-gradient(ellipse 80% 60% at 5% 5%,   rgba(13, 185, 150, 0.45) 0%, transparent 55%),
+  radial-gradient(ellipse 60% 55% at 95% 95%,  rgba(80, 0, 180, 0.4)   0%, transparent 55%),
+  radial-gradient(ellipse 50% 70% at 40% 45%,  rgba(0, 60, 180, 0.35)  0%, transparent 65%),
+  radial-gradient(ellipse 40% 40% at 80% 15%,  rgba(180, 0, 100, 0.2)  0%, transparent 50%),
+  #060d1a;
+
+// ── Badge / tag glass ─────────────────────────────────────────────────
+@mixin glass-badge($color: rgba(13,115,119,.30)) {
+  background: $color;
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 100px;
+  padding: 3px 10px;
+  font-size: 11px; font-weight: 700;
+  color: rgba(255,255,255,0.92);
+  backdrop-filter: blur(6px) saturate(260%);
+  white-space: nowrap;
+}
+
+// ── Card row (lista de rutas, ajustes) ───────────────────────────────
+@mixin glass-card-row {
+  @include glass(0.04, 6px, 260%);
+  border-radius: 16px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: background 0.2s ease;
+  &:active { background: rgba(255,255,255,0.09); }
+}
+
+// ── Section header ────────────────────────────────────────────────────
+.glass-section-label {
+  font-size: 10px; font-weight: 700;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase; letter-spacing: 0.7px;
+  padding: 0 4px; margin: 16px 0 8px;
+}

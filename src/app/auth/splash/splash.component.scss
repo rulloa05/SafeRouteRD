@@ -1,0 +1,179 @@
+@use 'variables' as *;
+
+.splash {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100dvh;
+  background: transparent; /* aurora from app-root shows through */
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  /* Floating orbs for extra depth */
+  &::before {
+    content: '';
+    position: absolute;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(13,185,150,.18) 0%, transparent 70%);
+    top: -60px; left: -80px;
+    animation: orbFloat 8s ease-in-out infinite;
+    pointer-events: none;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(80,0,180,.18) 0%, transparent 70%);
+    bottom: 100px; right: -60px;
+    animation: orbFloat 10s ease-in-out 2s infinite reverse;
+    pointer-events: none;
+  }
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 20px 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Glass logo card */
+  &__logo-slot {
+    width: 96px; height: 96px;
+    background: rgba(255, 255, 255, 0.09);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow:
+      inset 0 2px 0 rgba(255,255,255,.3),
+      0 8px 32px rgba(0,0,0,.35);
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto 0;
+    animation: fadeScale .8s ease-out;
+  }
+  &__logo-img {
+    width: 72px; height: 72px;
+    object-fit: contain;
+    border-radius: 16px;
+  }
+  &__logo-placeholder { font-size: 30px; }
+
+  &__name {
+    font-size: 30px;
+    font-weight: $font-weight-extrabold;
+    color: #fff;
+    letter-spacing: -.5px;
+    line-height: 1.2;
+    margin-top: 16px;
+    text-shadow: 0 2px 20px rgba(13,185,150,.4);
+  }
+
+  &__tagline {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 8px;
+    line-height: 1.6;
+    padding: 0 20px;
+  }
+
+  /* Glass pill tag */
+  &__pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: $font-weight-semibold;
+    color: $color-accent-gold;
+    background: rgba(212,168,67,.12);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(212,168,67,.3);
+    padding: 7px 16px;
+    border-radius: 20px;
+    margin-top: 16px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.15);
+  }
+
+  /* Glass mini-map */
+  &__mini-map {
+    width: 240px; height: 150px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 18px auto;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 24px rgba(0,0,0,.4);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  /* SDG row — glass */
+  &__sdg {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(52,199,89,.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(52,199,89,.22);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+    padding: 9px 14px;
+    border-radius: 14px;
+    font-size: 12px;
+    color: rgba(160,230,180,.9);
+    margin: 0 0 24px;
+    text-align: left;
+    width: 100%;
+  }
+  &__sdg-icon { font-size: 18px; flex-shrink: 0; }
+
+  /* Dots */
+  &__dots {
+    display: flex;
+    gap: $space-sm;
+    padding-bottom: $space-xl;
+    margin-top: auto;
+    position: relative;
+    z-index: 2;
+  }
+  &__dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.25);
+    border: 1px solid rgba(255,255,255,.15);
+    transition: background .3s, transform .3s;
+    &--active {
+      background: $color-accent-gold;
+      border-color: $color-accent-gold;
+      transform: scale(1.3);
+      box-shadow: 0 0 8px rgba(212,168,67,.5);
+    }
+  }
+
+  /* Buttons — glass style */
+  &__btns {
+    width: 100%;
+    padding: 0 20px calc(28px + env(safe-area-inset-bottom, 0px));
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    z-index: 2;
+  }
+}
+
+@keyframes fadeScale {
+  from { opacity: 0; transform: scale(.85); }
+  to   { opacity: 1; transform: scale(1);  }
+}
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0); }
+  50%       { transform: translate(20px, 30px); }
+}
